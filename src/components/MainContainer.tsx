@@ -1,4 +1,5 @@
 import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
+import Lenis from "@studio-freight/lenis";
 import About from "./About";
 import Career from "./Career";
 import Certifications from "./Certifications";
@@ -20,13 +21,29 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+    });
+
+    const raf = (time: number) => {
+      lenis.raf(time);
+      requestAnimationFrame(raf);
+    };
+
+    requestAnimationFrame(raf);
+
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
     };
+
     resizeHandler();
     window.addEventListener("resize", resizeHandler);
+
     return () => {
+      lenis.destroy();
       window.removeEventListener("resize", resizeHandler);
     };
   }, [isDesktopView]);
