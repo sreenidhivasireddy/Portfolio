@@ -1,5 +1,7 @@
 import { lazy, PropsWithChildren, Suspense, useEffect, useState } from "react";
 import Lenis from "@studio-freight/lenis";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About from "./About";
 import Career from "./Career";
 import Certifications from "./Certifications";
@@ -21,19 +23,38 @@ const MainContainer = ({ children }: PropsWithChildren) => {
   );
 
   useEffect(() => {
+    gsap.registerPlugin(ScrollTrigger);
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
       smoothWheel: true,
     });
 
-    const raf = (time: number) => {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
+    let frameId = 0;
+
+    const onLenisScroll = () => {
+      ScrollTrigger.update();
     };
 
-    requestAnimationFrame(raf);
+    lenis.on("scroll", onLenisScroll);
 
+    const raf = (time: number) => {
+      lenis.raf(time);
+      frameId = requestAnimationFrame(raf);
+    };
+
+    frameId = requestAnimationFrame(raf);
+    gsap.ticker.lagSmoothing(0);
+
+    return () => {
+      cancelAnimationFrame(frameId);
+      lenis.off("scroll", onLenisScroll);
+      lenis.destroy();
+    };
+  }, []);
+
+  useEffect(() => {
     const resizeHandler = () => {
       setSplitText();
       setIsDesktopView(window.innerWidth > 1024);
@@ -43,7 +64,6 @@ const MainContainer = ({ children }: PropsWithChildren) => {
     window.addEventListener("resize", resizeHandler);
 
     return () => {
-      lenis.destroy();
       window.removeEventListener("resize", resizeHandler);
     };
   }, [isDesktopView]);
