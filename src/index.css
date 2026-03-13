@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+:root {
+  font-family: "Geist", sans-serif;
+
+  font-optical-sizing: auto;
+  font-style: normal;
+  line-height: 1.5;
+  scroll-behavior: smooth;
+  color-scheme: light dark;
+  color: #eae5ec;
+  background-color: var(--backgroundColor);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  --accentColor: #c2a4ff;
+  --backgroundColor: #0b080c;
+  --vh: 100vh;
+  --vh: 100svh;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Geist", sans-serif;
+}
+body {
+  overflow: hidden;
+}
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+a:hover {
+  color: var(--accentColor);
+}
+main {
+  opacity: 1;
+  transition: 0.3s;
+}
+.main-active {
+  opacity: 0;
+  animation: fadeIn 1s 1;
+  animation-fill-mode: forwards;
+}
+@keyframes fadeIn {
+  100% {
+    opacity: 1;
+  }
+}
+body {
+  margin: 0;
+  height: auto;
+  background-color: #000;
+  flex-grow: 1;
+  --cWidth: calc(100% - 30px);
+  --cMaxWidth: 1920px;
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+.main-body {
+  max-width: 100vw;
+  overflow-x: hidden;
+}
+
+.container-main {
+  width: 100%;
+  margin: auto;
+  position: relative;
+}
+.container1 {
+  width: var(--cWidth);
+  height: var(--vh);
+  margin: auto;
+  position: relative;
+}
+.split-line {
+  overflow: hidden;
+}
+.split-h2 {
+  overflow: hidden;
+  display: flex;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+}
+
+.techstack {
+  width: 100%;
+  position: relative;
+  height: var(--vh);
+  margin: auto;
+  margin-top: 50px;
+  margin-bottom: -100px;
+}
+
+.techstack h2 {
+  font-size: 80px;
+  text-align: center;
+  position: absolute;
+  width: 100%;
+  top: 40px;
+  left: 0;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+.techstack-trigger {
+  position: absolute;
+  left: 50%;
+  bottom: 72px;
+  transform: translateX(-50%);
+  z-index: 12;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(10, 8, 15, 0.7);
+  color: #f4ecff;
+  padding: 12px 20px;
+  border-radius: 999px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  font: inherit;
+  font-size: 12px;
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+}
+.techstack-popup-backdrop {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: rgba(3, 2, 7, 0.72);
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.techstack-popup {
+  width: min(980px, 100%);
+  max-height: min(80vh, 760px);
+  overflow: auto;
+  background: linear-gradient(180deg, rgba(26, 18, 38, 0.96), rgba(10, 8, 15, 0.96));
+  border: 1px solid rgba(194, 164, 255, 0.25);
+  border-radius: 28px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.45);
+  padding: 28px;
+}
+.techstack-popup-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.techstack-popup-head h3 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+}
+.techstack-popup-close {
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: inherit;
+  border-radius: 999px;
+  padding: 10px 16px;
+  font: inherit;
+  cursor: pointer;
+}
+.techstack-popup-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+}
+.techstack-popup-chip {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  line-height: 1.3;
+}
+
+@media screen and (min-width: 768px) {
+  body {
+    --cWidth: 94%;
+  }
+}
+@media screen and (max-width: 900px) {
+  .techstack h2 {
+    font-size: 40px;
+  }
+  .techstack-trigger {
+    bottom: 42px;
+    width: calc(100% - 40px);
+    max-width: 320px;
+  }
+  .techstack-popup {
+    padding: 20px;
+  }
+  .techstack-popup-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .techstack-popup-head h3 {
+    font-size: 26px;
+  }
+}

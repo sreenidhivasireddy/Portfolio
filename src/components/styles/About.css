@@ -1,0 +1,237 @@
+.about-section {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  place-items: center;
+  position: relative;
+  opacity: 1;
+  height: auto;
+  width: var(--cWidth);
+  margin: auto;
+  overflow: hidden;
+}
+
+.about-glow {
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194, 164, 255, 0.22), transparent 68%);
+  filter: blur(24px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.about-glow-left {
+  left: -180px;
+  top: 18%;
+}
+
+.about-glow-right {
+  right: -180px;
+  bottom: 8%;
+}
+
+.about-me {
+  padding: 50px 0px;
+  padding-bottom: 0;
+  width: 500px;
+  max-width: calc(100% - 15px);
+  position: relative;
+  z-index: 1;
+}
+
+.about-me h3 {
+  margin: 0;
+  font-size: clamp(3.4rem, 7vw, 5.4rem);
+  text-transform: uppercase;
+  letter-spacing: 0.38em;
+  font-weight: 500;
+  line-height: 0.95;
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  background: linear-gradient(
+    90deg,
+    #ffffff 0%,
+    var(--accentColor) 50%,
+    #ffffff 100%
+  );
+  background-size: 220% auto;
+  animation: aboutGradientShift 9s linear infinite;
+  transition: letter-spacing 0.35s ease, transform 0.35s ease;
+}
+
+@supports ((-webkit-background-clip: text) or (background-clip: text)) {
+  .about-me h3 {
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+.about-me h3:hover {
+  letter-spacing: 0.44em;
+}
+
+.about-underline {
+  display: block;
+  width: 160px;
+  height: 2px;
+  margin: 16px 0 26px;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--accentColor), rgba(194, 164, 255, 0.1));
+  box-shadow: 0 0 18px rgba(194, 164, 255, 0.28);
+  transition: transform 0.7s ease 0.12s;
+}
+
+.about-me p {
+  font-size: 33px;
+  font-weight: 600;
+  line-height: 36px;
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.about-title,
+.about-para,
+.about-pill-row {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease;
+}
+
+.about-title.about-visible {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+}
+
+.about-underline.about-visible {
+  transform: scaleX(1);
+}
+
+.about-para.about-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.2s;
+  visibility: visible;
+}
+
+.about-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.about-pill-row.about-visible {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.32s;
+  visibility: visible;
+}
+
+.about-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(194, 164, 255, 0.3);
+  background: rgba(194, 164, 255, 0.1);
+  box-shadow: 0 0 18px rgba(194, 164, 255, 0.12);
+  color: #f2ebfb;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@keyframes aboutGradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  100% {
+    background-position: 220% 50%;
+  }
+}
+
+@media only screen and (min-width: 600px) {
+  .about-section {
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  .about-me {
+    width: 500px;
+    max-width: calc(100% - 70px);
+    transform: translateY(0%);
+  }
+
+  .about-section {
+    opacity: 1;
+  }
+}
+
+@media only screen and (min-width: 1025px) {
+  .about-section {
+    width: var(--cWidth);
+    justify-content: right;
+    max-width: 1920px;
+    height: var(--vh);
+    padding: 0px;
+    opacity: 1;
+  }
+
+  .about-me {
+    padding: 0px;
+    width: 50%;
+  }
+
+  .about-me p {
+    font-size: 1.9vw;
+    line-height: 2.3vw;
+  }
+}
+
+@media only screen and (min-width: 1950px) {
+  .about-me p {
+    font-size: 2.5rem;
+    line-height: 2.7rem;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .about-glow {
+    width: 280px;
+    height: 280px;
+  }
+
+  .about-glow-left {
+    left: -140px;
+    top: 10%;
+  }
+
+  .about-glow-right {
+    right: -140px;
+    bottom: 0;
+  }
+
+  .about-me h3 {
+    letter-spacing: 0.24em;
+  }
+
+  .about-me h3:hover {
+    letter-spacing: 0.28em;
+  }
+
+  .about-me p {
+    font-size: 26px;
+    line-height: 30px;
+  }
+}

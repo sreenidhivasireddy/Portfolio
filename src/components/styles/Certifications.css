@@ -1,0 +1,138 @@
+.certifications-section {
+  padding: 60px 0 120px;
+  margin: 0 auto;
+}
+
+.certifications-container {
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.certifications-container h2 {
+  font-size: 70px;
+  line-height: 70px;
+  font-weight: 400;
+  margin: 0 0 56px;
+  text-align: left;
+  background: linear-gradient(0deg, #7f40ff, #ffffff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 28px;
+}
+
+.certification-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 48px;
+}
+
+.certification-copy {
+  max-width: 820px;
+  display: block;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.certification-copy:hover {
+  color: inherit;
+  transform: translateY(-2px);
+}
+
+.certification-label {
+  display: inline-block;
+  margin-bottom: 12px;
+  font-size: 14px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accentColor);
+}
+
+.certification-card h3 {
+  margin: 0 0 12px;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 500;
+}
+
+.certification-period {
+  margin: 0 0 16px;
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.certification-details {
+  display: grid;
+  gap: 14px;
+}
+
+.certification-details p {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.55;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.certification-details span {
+  display: block;
+  margin-bottom: 2px;
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accentColor);
+}
+
+.certification-badge-image {
+  width: 176px;
+  height: auto;
+  flex-shrink: 0;
+  margin-top: 6px;
+  display: block;
+}
+
+@media only screen and (max-width: 1200px) {
+  .certifications-container h2 {
+    font-size: 52px;
+    line-height: 52px;
+  }
+
+  .certification-card h3 {
+    font-size: 28px;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .certification-card {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .certifications-section {
+    padding: 40px 0 100px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .certifications-container h2 {
+    font-size: 42px;
+    line-height: 42px;
+    margin-bottom: 42px;
+  }
+
+  .certification-card h3 {
+    font-size: 24px;
+  }
+
+  .certification-period,
+  .certification-details p {
+    font-size: 16px;
+  }
+}
